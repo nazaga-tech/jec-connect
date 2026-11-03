@@ -1,0 +1,20 @@
+import { etatInitial, pionsJouables, jouerPion, type Etat } from "./ludo";
+let echecs = 0;
+const ok = (n: string, c: boolean) => { if (!c) echecs++; console.log(c ? "OK  " : "FAIL", n); };
+const e0 = etatInitial();
+ok("3 : aucun pion ne sort", pionsJouables(e0, 1, 3).length === 0);
+ok("6 : les 4 pions peuvent sortir", pionsJouables(e0, 1, 6).length === 4);
+const cap: Etat = { p: [[5, -1, -1, -1], [33, -1, -1, -1]], de: null };
+let r = jouerPion(cap, 1, 0, 2);
+ok("capture sur case 7", r.etat.p[1][0] === -1 && r.rejoue);
+const sure: Etat = { p: [[6, -1, -1, -1], [34, -1, -1, -1]], de: null };
+r = jouerPion(sure, 1, 0, 2);
+ok("pas de capture sur case sûre", r.etat.p[1][0] === 34 && !r.rejoue);
+const blo: Etat = { p: [[5, -1, -1, -1], [33, 33, -1, -1]], de: null };
+r = jouerPion(blo, 1, 0, 2);
+ok("blocage de deux pions", r.etat.p[1][0] === 33 && r.etat.p[1][1] === 33);
+const fin: Etat = { p: [[54, 56, 56, 56], [-1, -1, -1, -1]], de: null };
+ok("arrivée exacte seulement", pionsJouables(fin, 1, 3).length === 0 && pionsJouables(fin, 1, 2).length === 1);
+r = jouerPion(fin, 1, 0, 2);
+ok("victoire", r.gagne);
+if (echecs) { console.error(echecs + " test(s) en échec"); process.exit(1); }

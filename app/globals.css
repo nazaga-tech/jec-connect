@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { @apply bg-craie font-sans text-nuit antialiased; }
+h1, h2, h3 { @apply font-serif; }
+.champ { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 outline-none transition focus:border-ciel focus:ring-4 focus:ring-ciel/20; }
+.btn { @apply inline-block rounded-xl bg-nuit px-5 py-2.5 font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-ciel hover:shadow-md focus:outline-none focus:ring-4 focus:ring-or/50; }
+.btn-or { @apply inline-block rounded-xl bg-or px-5 py-2.5 font-bold text-nuit shadow-sm transition hover:-translate-y-0.5 hover:brightness-105 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-nuit/30; }
+.carte-ui { @apply rounded-2xl bg-white shadow-[0_8px_30px_rgba(11,26,58,.07)] ring-1 ring-black/5; }
+.fond-hero { background: radial-gradient(900px 500px at 85% -10%, rgba(232,168,36,.28), transparent 60%), radial-gradient(700px 500px at -10% 110%, rgba(47,111,181,.45), transparent 60%), #0b1a3a; }
+.trame { background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; }
